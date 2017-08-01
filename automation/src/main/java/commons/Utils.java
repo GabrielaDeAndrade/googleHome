@@ -4,6 +4,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Utils {
@@ -24,6 +25,21 @@ public class Utils {
 		element.click();
 	}
 
+	public void enable(WebElement element, boolean enable) {
+		if (enable) {
+			if (!element.isSelected())
+				element.click();
+		} else {
+			if (element.isSelected())
+				element.click();
+		}
+	}
+	
+	public void selectOption(WebElement element, String value) {
+		waitElement(element);
+		new Select(element).selectByValue(value);
+	}
+	
 	public boolean isDispleyd(WebElement element) {
 		try {
 			waitElement(element);
@@ -47,4 +63,13 @@ public class Utils {
 		waitElement(element);
 		element.sendKeys(Keys.TAB);
 	}
+	
+	public void handleFrame(WebElement element) {
+		waitElement(element);
+		driver.switchTo().frame(element);
+	//	driver.switchTo().defaultContent();
+	}
+
+
+	
 }

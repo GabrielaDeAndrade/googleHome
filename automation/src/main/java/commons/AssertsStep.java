@@ -15,7 +15,8 @@ public class AssertsStep {
 		Assert.assertTrue(assertsPage.isImagemDisplayed(searchResult));
 	}
 	
-	public void checkIfPageIsOpen(String titlePage) {
+	public Object checkIfPageIsOpen(String titlePage) {
 		Assert.assertTrue(assertsPage.isPageOpen(titlePage));
+		return this;
 	}
 }
